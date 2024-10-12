@@ -3,7 +3,12 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Geist Mono";
+}
+
+/* html2canvas special field */
+body > div:last-child > span + img {
+  display: inline !important;
 }
 
 @layer utilities {

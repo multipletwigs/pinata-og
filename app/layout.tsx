@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { PlaygroundLayout } from "@/components/layouts/playground-layout";
+import PlaygroundLayout from "@/components/layouts/playground-layout";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +30,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <PlaygroundLayout>{children}</PlaygroundLayout>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <PlaygroundLayout>{children}</PlaygroundLayout>
+        </ThemeProvider>
       </body>
     </html>
   );

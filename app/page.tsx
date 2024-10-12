@@ -1,10 +1,12 @@
 import Image from "next/image";
-import OGEditor from "./(og-playground)/components/og-editor";
+import OGPlayground from "./(og-playground)/components/og-editor";
+import OGImageRenderer from "./(og-playground)/components/og-renderer";
 
 export default function Home() {
   return (
-    <div>
-      <OGEditor height="100%" />
-    </div>
+    <>
+      <OGPlayground />
+      <OGImageRenderer previewWidth={600} />
+    </>
   );
 }
