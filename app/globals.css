@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-  font-family: "Geist Mono";
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 /* html2canvas special field */
