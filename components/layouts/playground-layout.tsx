@@ -4,17 +4,9 @@ import { Home, Menu, Package, Package2, ShoppingCart } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ReactNode } from "react";
 import { ModeToggle } from "@/components/theme-toggle";
-import ProjectSelect from "./layout-header";
 import ProfileDisplay from "./profile-display";
 import { usePathname } from "next/navigation";
 import PinataHackathonSubmissionCard from "./submission-card";
