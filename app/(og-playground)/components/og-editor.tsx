@@ -2,6 +2,8 @@
 import { ReactNode } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TabImages from "./tab-images";
+import OGMetadataExport from "./og-metadata";
+import { LucideLock } from "lucide-react";
 
 interface TabItem {
   triggerValue: string;
@@ -17,8 +19,13 @@ const TAB_ITEMS: TabItem[] = [
     triggerContent: <TabImages />,
   },
   {
+    triggerValue: "metadata",
+    triggerLabel: "Metadata Editor",
+    triggerContent: <OGMetadataExport />,
+  },
+  {
     triggerValue: "editor",
-    triggerLabel: "Editor",
+    triggerLabel: "OG Code Editor",
     triggerContent: <div>This is for Editor!</div>,
     disabled: true,
   },
@@ -26,19 +33,28 @@ const TAB_ITEMS: TabItem[] = [
 
 export default function OGPlayground() {
   return (
-    <Tabs defaultValue="images" className="w-[600px]">
+    <Tabs defaultValue="images" className="w-full md:w-[600px]">
       <TabsList>
-        {TAB_ITEMS.map((tab) => {
+        {TAB_ITEMS.map((tab, index) => {
           return (
-            <TabsTrigger disabled={tab.disabled} value={tab.triggerValue}>
+            <TabsTrigger
+              key={`playground-tab-${tab.triggerValue}-${index}`}
+              disabled={tab.disabled}
+              value={tab.triggerValue}
+            >
+              {tab.disabled && <LucideLock className="w-4 h-4 mr-2" />}
               {tab.triggerLabel}
             </TabsTrigger>
           );
         })}
       </TabsList>
-      {TAB_ITEMS.map((tab) => {
+      {TAB_ITEMS.map((tab, index) => {
         return (
-          <TabsContent className="mt-6" value={tab.triggerValue}>
+          <TabsContent
+            key={`playground-tab-item-${tab.triggerValue}-${index}`}
+            className="mt-6"
+            value={tab.triggerValue}
+          >
             {tab.triggerContent}
           </TabsContent>
         );

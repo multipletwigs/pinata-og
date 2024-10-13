@@ -44,15 +44,6 @@ export default function ProjectSelect() {
     setIsSignUp,
   } = useAuthStore();
 
-  const { domains, selectedDomain, selectDomain, fetchDomains } =
-    useUploadStore();
-
-  useEffect(() => {
-    checkUser().then(() => {
-      if (user) fetchDomains();
-    });
-  }, [checkUser, user, fetchDomains]);
-
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;

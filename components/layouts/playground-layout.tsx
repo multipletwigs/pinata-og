@@ -132,7 +132,7 @@ export default function PlaygroundLayout({
           </div>
           <ProfileDisplay />
         </header>
-        <main className="flex gap-4 p-4 lg:gap-6 lg:p-6 mx-auto">
+        <main className="flex gap-4 p-4 lg:gap-6 lg:p-6 mx-auto flex-col xl:flex-row">
           {children}
         </main>
       </div>

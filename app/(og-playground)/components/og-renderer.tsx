@@ -14,6 +14,7 @@ import { CheckCircle2, Download, Loader } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
+import OGImageMetadataCopy from "./og-medatadata-copy";
 
 interface OGImageRendererProps {
   previewWidth?: number;
@@ -138,6 +139,10 @@ const OGImageRenderer: React.FC<OGImageRendererProps> = React.memo((props) => {
           </Alert>
         )}
       </fieldset>
+
+      <div className="mt-8">
+        <OGImageMetadataCopy />
+      </div>
     </div>
   );
 });

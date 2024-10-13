@@ -28,8 +28,7 @@ interface LayoutAState {
 const useLayoutAStore = create<LayoutAState>((set) => ({
   logoSrc: "default-layouts/pinata-logo.png",
   companyName: "~/npm i pinata",
-  ctaText:
-    "Add file uploads and retrieval in minutes so you can focus on your app — because you’ve got better things to code than infrastructure.",
+  ctaText: "-- because you’ve got better things to code than infrastructure.",
   title: "THE INTERNET'S FILE API",
   gradientStart: "#E6F2FF",
   gradientEnd: "#FFF0F5",

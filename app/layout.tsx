@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import PlaygroundLayout from "@/components/layouts/playground-layout";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -37,6 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <PlaygroundLayout>{children}</PlaygroundLayout>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

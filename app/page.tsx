@@ -7,10 +7,7 @@ export default function Home() {
   return (
     <>
       <OGPlayground />
-      <div className="flex flex-col gap-4">
-        <OGImageRenderer previewWidth={600} />
-        <OGMedataExport />
-      </div>
+      <OGImageRenderer />
     </>
   );
 }

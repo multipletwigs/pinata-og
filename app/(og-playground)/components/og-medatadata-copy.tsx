@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import useOGMetadataStore from "@/app/(og-playground)/store/og-metadata";
 
-const OGImageMetadataCopy = ({ imageUrl, title, description, siteName }) => {
+const OGImageMetadataCopy = () => {
   const [copied, setCopied] = useState(false);
+  const { metadata } = useOGMetadataStore();
+
+  const { imageUrl, title, description, siteName } = metadata;
 
   const metaTags = `
 <meta property="og:image" content="${imageUrl}" />
@@ -25,9 +29,11 @@ const OGImageMetadataCopy = ({ imageUrl, title, description, siteName }) => {
   };
 
   return (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-full max-w-lg md:max-w-2xl">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">OG Image Metadata</CardTitle>
+        <CardTitle className="text-sm font-medium">
+          Copy this into your header tag!
+        </CardTitle>
         <Button
           variant="ghost"
           size="sm"
