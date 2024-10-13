@@ -1,10 +1,7 @@
-import React from "react";
 import { create } from "zustand";
 
-// Define the grid type options
 type GridType = "none" | "lines";
 
-// Define the store state type
 interface LayoutAState {
   logoSrc: string;
   companyName: string;
@@ -13,7 +10,7 @@ interface LayoutAState {
   gradientStart: string;
   gradientEnd: string;
   gridType: GridType;
-  imageSrc: string; // New property for the right-side image
+  imageSrc: string;
   setLogoSrc: (logoSrc: string) => void;
   setCompanyName: (companyName: string) => void;
   setCtaText: (ctaText: string) => void;
@@ -21,10 +18,9 @@ interface LayoutAState {
   setGradientStart: (gradientStart: string) => void;
   setGradientEnd: (gradientEnd: string) => void;
   setGridType: (gridType: GridType) => void;
-  setImageSrc: (imageSrc: string) => void; // New setter for imageSrc
+  setImageSrc: (imageSrc: string) => void;
 }
 
-// Create the Zustand store
 const useLayoutAStore = create<LayoutAState>((set) => ({
   logoSrc: "default-layouts/pinata-logo.png",
   companyName: "~/npm i pinata",

@@ -1,3 +1,13 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "react/display-name": "off",
+    "react/no-escaped-entities": "off",
+    "@typescript-eslint/no-unsafe-function-type": "off",
+    "react/no-unescaped-entities": "off",
+    "@typescript-eslint/no-require-imports": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  }
 }

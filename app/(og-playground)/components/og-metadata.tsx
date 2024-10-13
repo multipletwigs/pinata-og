@@ -10,7 +10,7 @@ import OGSaveMetadata from "./og-metadata-save";
 
 export default function OGMetadataExport() {
   const { metadata, setMetadata } = useOGMetadataStore();
-  const [error, setError] = useState("");
+  const [error, _] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

@@ -32,7 +32,7 @@ const SaveOGMetadata = () => {
 
     setIsSaving(true);
     try {
-      const { data, error } = await supabase.from("paths").upsert(
+      const { error } = await supabase.from("paths").upsert(
         {
           name: metadata.og_image_name,
           title: metadata.title,
