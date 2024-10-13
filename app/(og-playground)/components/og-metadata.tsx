@@ -12,7 +12,7 @@ export default function OGMetadataExport() {
   const { metadata, setMetadata } = useOGMetadataStore();
   const [error, _] = useState("");
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     const { name, value } = e.target;
     setMetadata({ [name]: value });
   };

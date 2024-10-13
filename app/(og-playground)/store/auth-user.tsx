@@ -56,7 +56,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       }
 
       set({ user: result.data.user, isLoginModalOpen: false });
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
       set({
         authError: error.message || "An error occurred during authentication",
