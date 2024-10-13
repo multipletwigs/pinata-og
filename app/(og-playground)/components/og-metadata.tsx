@@ -23,12 +23,12 @@ export default function OGMetadataExport() {
 
       <form className="space-y-6">
         <div className="space-y-2">
-          <Label htmlFor="og_image_path">OG Image Name (Full URL Path)</Label>
+          <Label htmlFor="og_image_path">OG Image Name</Label>
           <Input
             id="og_image_path"
             name="og_image_path"
             type="text"
-            placeholder="https://pinata.nightly.ink/dashboard"
+            placeholder="nightly.ink og:images"
             value={metadata.og_image_path || ""}
             onChange={handleInputChange}
           />
@@ -36,22 +36,24 @@ export default function OGMetadataExport() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="title">Title</Label>
+            <Label htmlFor="title">Metatag Title</Label>
             <Input
               id="title"
               name="title"
               type="text"
               value={metadata.title}
+              placeholder="Pinata Submission"
               onChange={handleInputChange}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="site_name">Site Name</Label>
+            <Label htmlFor="site_name">Site Path</Label>
             <Input
               id="site_name"
               name="site_name"
               type="text"
               value={metadata.site_name || ""}
+              placeholder="https://pinata.nightly.ink"
               onChange={handleInputChange}
             />
           </div>
@@ -62,6 +64,7 @@ export default function OGMetadataExport() {
           <Textarea
             id="description"
             name="description"
+            placeholder="Hello everyone, are you sleeping well? Drink water please."
             value={metadata.description || ""}
             onChange={handleInputChange}
           />

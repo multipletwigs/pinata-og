@@ -105,8 +105,6 @@ export default function LayoutASettings() {
           onChange={setTitle}
         />
 
-        <Separator className="my-4" />
-
         <div className="grid gap-4">
           <h3 className="text-sm font-medium">Background Gradient</h3>
           <div className="grid grid-cols-2 gap-4">

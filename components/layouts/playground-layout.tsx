@@ -106,30 +106,10 @@ export default function PlaygroundLayout({
                 </Link>
               </nav>
               <div className="mt-auto">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Upgrade to Pro</CardTitle>
-                    <CardDescription>
-                      Unlock all features and get unlimited access to our
-                      support team.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Button size="sm" className="w-full">
-                      Upgrade
-                    </Button>
-                  </CardContent>
-                </Card>
+                <PinataHackathonSubmissionCard />
               </div>
             </SheetContent>
           </Sheet>
-          <div className="w-full flex-1">
-            <form>
-              <div className="relative">
-                <ProjectSelect />
-              </div>
-            </form>
-          </div>
           <ProfileDisplay />
         </header>
         <main className="flex gap-4 p-4 lg:gap-6 lg:p-6 mx-auto flex-col lg:flex-row">

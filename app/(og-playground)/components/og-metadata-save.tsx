@@ -5,8 +5,9 @@ import { useToast } from "@/hooks/use-toast";
 import useOGMetadataStore from "@/app/(og-playground)/store/og-metadata";
 import { useAuthStore } from "../store/auth-user";
 import { LoginDialog } from "@/components/login-dialog";
-import { Loader2 } from "lucide-react";
+import { Loader2, Save, LogIn } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const SaveOGMetadata = () => {
   const { saveMetadata: saveMetadataServer, metadata } = useOGMetadataStore();
@@ -46,33 +47,54 @@ const SaveOGMetadata = () => {
 
   const buttonText = user
     ? "Save and Generate Metadata"
-    : "Login to Generate and Save Metadata";
+    : "Login to Generate og:image and Save Metadata";
 
   return (
     <div className="space-y-4">
-      <Button className="w-full" onClick={handleAction} disabled={isLoading}>
-        {isLoading ? (
-          <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Processing...
-          </>
-        ) : (
-          buttonText
-        )}
-      </Button>
+      <div className="space-y-4">
+        <Button className="w-full" onClick={handleAction} disabled={isLoading}>
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Processing...
+            </>
+          ) : user ? (
+            <>
+              <Save className="mr-2 h-4 w-4" />
+              {buttonText}
+            </>
+          ) : (
+            <>
+              <LogIn className="mr-2 h-4 w-4" />
+              {buttonText}
+            </>
+          )}
+        </Button>
+      </div>{" "}
       {isLoginModalOpen && <LoginDialog />}
-      {metadata.cid && (
+      {
         <Card>
-          <CardContent className="pt-6">
-            <h3 className="font-semibold text-sm mb-2"></h3>
-            OG Image Content Link
-            <p className="text-sm break-all">
-              {" "}
-              {`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/og-image?cid=${metadata.cid}`}
-            </p>
+          <CardContent className="pt-4">
+            <h3 className="font-semibold text-sm mb-2">
+              OG Image Content Link
+            </h3>
+            {isLoading ? (
+              <div className="mt-2 flex flex-col gap-2">
+                <Skeleton className="w-full h-4" />
+                <Skeleton className="w-full h-4" />
+              </div>
+            ) : (
+              <p className="text-sm break-all mt-2">
+                {!user
+                  ? "Login to get your og:image metatag url"
+                  : metadata.cid
+                    ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/get-og?cid=${metadata.cid}`
+                    : "Save to generate og image metatag url"}
+              </p>
+            )}
           </CardContent>
         </Card>
-      )}
+      }
     </div>
   );
 };

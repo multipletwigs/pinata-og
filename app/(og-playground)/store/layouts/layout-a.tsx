@@ -23,9 +23,9 @@ interface LayoutAState {
 
 const useLayoutAStore = create<LayoutAState>((set) => ({
   logoSrc: "default-layouts/pinata-logo.png",
-  companyName: "~/npm i pinata",
-  ctaText: "-- because you’ve got better things to code than infrastructure.",
-  title: "THE INTERNET'S FILE API",
+  companyName: "og:pinata",
+  ctaText: "-- because you’ve got better things to code than metatags.",
+  title: "Generate beautiful OpenGraph Images with Pinata ♡ ༘*.ﾟ",
   gradientStart: "#E6F2FF",
   gradientEnd: "#FFF0F5",
   gridType: "lines",

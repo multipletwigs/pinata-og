@@ -33,10 +33,10 @@ const OGImageMetadataCopy = () => {
   };
 
   return (
-    <Card className="w-full max-w-lg md:max-w-xl">
+    <Card className="w-full">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium">
-          Copy this into your header tag!
+          Edit in Metadata Editor and Copy this into your header tag!
         </CardTitle>
         <Button
           variant="ghost"
@@ -52,9 +52,11 @@ const OGImageMetadataCopy = () => {
         </Button>
       </CardHeader>
       <CardContent>
-        <pre className="bg-muted p-4 rounded-md overflow-x-auto text-sm">
-          <code>{metaTags}</code>
-        </pre>
+        <div className="h-40 w-[500px] overflow-y-auto overflow-x-auto">
+          <pre className="bg-muted p-4 rounded-md text-sm">
+            <code>{metaTags}</code>
+          </pre>
+        </div>
       </CardContent>
     </Card>
   );
