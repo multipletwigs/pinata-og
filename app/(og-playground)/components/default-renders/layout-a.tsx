@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo } from "react";
 import useLayoutAStore from "@/app/(og-playground)/store/layouts/layout-a";
+import { useAuthStore } from "../../store/auth-user";
 
 const LayoutA: React.FC = () => {
   const {
@@ -13,6 +14,7 @@ const LayoutA: React.FC = () => {
     gridType,
     imageSrc,
   } = useLayoutAStore();
+  const { user } = useAuthStore();
 
   const gridBackground = useMemo(() => {
     switch (gridType) {

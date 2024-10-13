@@ -1,28 +1,40 @@
-create table paths (
-  id uuid default uuid_generate_v4() primary key,
-  name text not null,
-  user_id uuid references auth.users(id) on delete cascade,
-  created_at timestamp with time zone default now(),
-  updated_at timestamp with time zone default now(),
-  unique (name, user_id)
+CREATE TABLE og_content (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    cid TEXT NOT NULL UNIQUE,
+    title TEXT NOT NULL,
+    description TEXT,
+    og_image_path TEXT,
+    site_name TEXT,
+    author TEXT,
+    user_id UUID REFERENCES auth.users(id),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
-alter table paths enable row level security;
+ALTER TABLE og_content ENABLE ROW LEVEL SECURITY;
 
-create policy "Users can create their own paths"
-  on paths for insert
-  with check (auth.uid() = user_id);
+CREATE FUNCTION update_modified_column() 
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
-create policy "Users can view their own paths"
-  on paths for select
-  using (auth.uid() = user_id);
+CREATE TRIGGER update_og_content_modtime
+BEFORE UPDATE ON og_content
+FOR EACH ROW
+EXECUTE FUNCTION update_modified_column();
 
-create policy "Users can update their own paths"
-  on paths for update
-  using (auth.uid() = user_id);
+CREATE POLICY insert_own_og_content ON og_content FOR INSERT
+    WITH CHECK (auth.uid() = user_id);
 
-create policy "Users can delete their own paths"
-  on paths for delete
-  using (auth.uid() = user_id);
+CREATE POLICY view_own_og_content ON og_content FOR SELECT
+    USING (auth.uid() = user_id);
 
-create index idx_paths_user_id on paths(user_id);
+CREATE POLICY update_own_og_content ON og_content FOR UPDATE
+    USING (auth.uid() = user_id)
+    WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY delete_own_og_content ON og_content FOR DELETE
+    USING (auth.uid() = user_id);

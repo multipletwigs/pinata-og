@@ -8,17 +8,21 @@ const OGImageMetadataCopy = () => {
   const [copied, setCopied] = useState(false);
   const { metadata } = useOGMetadataStore();
 
-  const { imageUrl, title, description, siteName } = metadata;
+  const { title, description, site_name, cid } = metadata;
+
+  const ogImageUrl = cid
+    ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/og-image?cid=${cid}`
+    : "";
 
   const metaTags = `
-<meta property="og:image" content="${imageUrl}" />
-<meta property="og:image:secure_url" content="${imageUrl}" />
+<meta property="og:image" content="${ogImageUrl}" />
+<meta property="og:image:secure_url" content="${ogImageUrl}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="${title}" />
 <meta property="og:title" content="${title}" />
 <meta property="og:description" content="${description}" />
-<meta property="og:site_name" content="${siteName}" />
+<meta property="og:site_name" content="${site_name}" />
   `.trim();
 
   const copyToClipboard = () => {
@@ -29,7 +33,7 @@ const OGImageMetadataCopy = () => {
   };
 
   return (
-    <Card className="w-full max-w-lg md:max-w-2xl">
+    <Card className="w-full max-w-lg md:max-w-xl">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium">
           Copy this into your header tag!

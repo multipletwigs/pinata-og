@@ -1,58 +1,36 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { createClient } from "@/lib/supabase/client";
 import useOGMetadataStore from "@/app/(og-playground)/store/og-metadata";
 import { useAuthStore } from "../store/auth-user";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-
-const supabase = createClient();
+import { LoginDialog } from "@/components/login-dialog";
+import { Loader2 } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const SaveOGMetadata = () => {
-  const { metadata } = useOGMetadataStore();
-  const [isSaving, setIsSaving] = useState(false);
-  const { user } = useAuthStore();
+  const { saveMetadata: saveMetadataServer, metadata } = useOGMetadataStore();
+  const { user, setIsLoginModalOpen, isLoginModalOpen } = useAuthStore();
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const handleAction = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    if (!user) {
+      setIsLoginModalOpen(true);
+    } else {
+      await saveMetadata();
+    }
+  };
 
   const saveMetadata = async () => {
-    if (!user) {
-      toast({
-        title: "Authentication Required",
-        description: "Please log in to save metadata.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsSaving(true);
+    setIsLoading(true);
     try {
-      // const { error } = await supabase.from("paths").upsert(
-      //   {
-      //     name: metadata.og_image_name,
-      //     title: metadata.title,
-      //     description: metadata.description,
-      //     image_url: metadata.imageUrl,
-      //     site_name: metadata.siteName,
-      //     og_url: metadata.url,
-      //     user_id: user.id, // Ensure user_id is set
-      //   },
-      //   {
-      //     onConflict: "name, user_id",
-      //     returning: "minimal",
-      //   },
-      // );
-      //
-      // if (error) throw error;
-
+      await saveMetadataServer();
       toast({
-        title: "Metadata Saved",
-        description: "Your OG metadata has been successfully saved.",
+        title: "Success",
+        description: "Metadata saved successfully.",
       });
     } catch (error) {
       console.error("Error saving metadata:", error);
@@ -62,27 +40,42 @@ const SaveOGMetadata = () => {
         variant: "destructive",
       });
     } finally {
-      setIsSaving(false);
+      setIsLoading(false);
     }
   };
 
-  const buttonContent = (
-    <Button onClick={saveMetadata} disabled={isSaving || !user}>
-      {isSaving ? "Saving..." : "Save to Supabase"}
-    </Button>
-  );
+  const buttonText = user
+    ? "Save and Generate Metadata"
+    : "Login to Generate and Save Metadata";
 
   return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>{buttonContent}</TooltipTrigger>
-        {!user && (
-          <TooltipContent>
-            <p>Please log in to save metadata</p>
-          </TooltipContent>
+    <div className="space-y-4">
+      <Button className="w-full" onClick={handleAction} disabled={isLoading}>
+        {isLoading ? (
+          <>
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            Processing...
+          </>
+        ) : (
+          buttonText
         )}
-      </Tooltip>
-    </TooltipProvider>
+      </Button>
+      {isLoginModalOpen && <LoginDialog />}
+      {metadata.cid && (
+        <Card>
+          <CardContent className="pt-6">
+            <h3 className="font-semibold text-sm mb-2">Generated Metadata</h3>
+            <p className="text-sm mb-2">
+              <span className="font-medium">CID:</span> {metadata.cid}
+            </p>
+            <p className="text-sm break-all">
+              <span className="font-medium">Full API URL:</span>{" "}
+              {`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/og-image?cid=${metadata.cid}`}
+            </p>
+          </CardContent>
+        </Card>
+      )}
+    </div>
   );
 };
 

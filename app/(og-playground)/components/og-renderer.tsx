@@ -10,6 +10,7 @@ import { debounce } from "@/lib/utils";
 import html2canvas from "html2canvas";
 import LayoutA from "./default-renders/layout-a";
 import useLayoutAStore from "../store/layouts/layout-a";
+import useOGImageStore from "../store/og-renderer";
 import { CheckCircle2, Download, Loader } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -23,9 +24,14 @@ interface OGImageRendererProps {
 const OGImageRenderer: React.FC<OGImageRendererProps> = React.memo((props) => {
   const { previewWidth = 600 } = props;
   const ogImageRef = useRef<HTMLDivElement>(null);
-  const [imageDataUrl, setImageDataUrl] = useState<string | null>(null);
-  const [isGenerating, setIsGenerating] = useState(true);
-  const [isComplete, setIsComplete] = useState(false);
+  const {
+    imageDataUrl,
+    isGenerating,
+    isComplete,
+    setImageDataUrl,
+    setIsGenerating,
+    setIsComplete,
+  } = useOGImageStore();
   const layoutAStore = useLayoutAStore();
 
   const generateImage = async () => {

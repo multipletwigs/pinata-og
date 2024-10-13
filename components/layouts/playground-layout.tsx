@@ -31,8 +31,8 @@ export default function PlaygroundLayout({
 }) {
   const pathname = usePathname();
   return (
-    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-      <div className="hidden border-r bg-muted/40 md:block">
+    <div className="grid min-h-screen w-full lg:grid-cols-[280px_1fr]">
+      <div className="hidden border-r bg-muted/40 lg:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Link href="/" className="flex items-center gap-2 font-semibold">
@@ -72,7 +72,7 @@ export default function PlaygroundLayout({
               <Button
                 variant="outline"
                 size="icon"
-                className="shrink-0 md:hidden"
+                className="shrink-0 lg:hidden"
               >
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle navigation menu</span>
@@ -132,7 +132,7 @@ export default function PlaygroundLayout({
           </div>
           <ProfileDisplay />
         </header>
-        <main className="flex gap-4 p-4 lg:gap-6 lg:p-6 mx-auto flex-col xl:flex-row">
+        <main className="flex gap-4 p-4 lg:gap-6 lg:p-6 mx-auto flex-col lg:flex-row">
           {children}
         </main>
       </div>
