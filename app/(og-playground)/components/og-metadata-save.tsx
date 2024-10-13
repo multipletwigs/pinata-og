@@ -32,23 +32,23 @@ const SaveOGMetadata = () => {
 
     setIsSaving(true);
     try {
-      const { error } = await supabase.from("paths").upsert(
-        {
-          name: metadata.og_image_name,
-          title: metadata.title,
-          description: metadata.description,
-          image_url: metadata.imageUrl,
-          site_name: metadata.siteName,
-          og_url: metadata.url,
-          user_id: user.id, // Ensure user_id is set
-        },
-        {
-          onConflict: "name, user_id",
-          returning: "minimal",
-        },
-      );
-
-      if (error) throw error;
+      // const { error } = await supabase.from("paths").upsert(
+      //   {
+      //     name: metadata.og_image_name,
+      //     title: metadata.title,
+      //     description: metadata.description,
+      //     image_url: metadata.imageUrl,
+      //     site_name: metadata.siteName,
+      //     og_url: metadata.url,
+      //     user_id: user.id, // Ensure user_id is set
+      //   },
+      //   {
+      //     onConflict: "name, user_id",
+      //     returning: "minimal",
+      //   },
+      // );
+      //
+      // if (error) throw error;
 
       toast({
         title: "Metadata Saved",
