@@ -26,14 +26,15 @@ interface LayoutAState {
 
 // Create the Zustand store
 const useLayoutAStore = create<LayoutAState>((set) => ({
-  logoSrc: "https://placekitten.com/200/200", // Larger, softer kitten image
-  companyName: "Serene Solutions",
-  ctaText: "Begin Your Journey",
-  title: "Embrace Simplicity, Unlock Potential",
-  gradientStart: "#E6F2FF", // Soft sky blue
-  gradientEnd: "#FFF0F5", // Light lavender pink
+  logoSrc: "default-layouts/pinata-logo.png",
+  companyName: "~/npm i pinata",
+  ctaText:
+    "Add file uploads and retrieval in minutes so you can focus on your app — because you’ve got better things to code than infrastructure.",
+  title: "THE INTERNET'S FILE API",
+  gradientStart: "#E6F2FF",
+  gradientEnd: "#FFF0F5",
   gridType: "lines",
-  imageSrc: "https://placekitten.com/450/500", // Default image for the right side
+  imageSrc: "default-layouts/pinata-mascot.png",
   setLogoSrc: (logoSrc) => set({ logoSrc }),
   setCompanyName: (companyName) => set({ companyName }),
   setCtaText: (ctaText) => set({ ctaText }),
@@ -41,7 +42,7 @@ const useLayoutAStore = create<LayoutAState>((set) => ({
   setGradientStart: (gradientStart) => set({ gradientStart }),
   setGradientEnd: (gradientEnd) => set({ gradientEnd }),
   setGridType: (gridType) => set({ gridType }),
-  setImageSrc: (imageSrc) => set({ imageSrc }), // New setter function
+  setImageSrc: (imageSrc) => set({ imageSrc }),
 }));
 
 export default useLayoutAStore;

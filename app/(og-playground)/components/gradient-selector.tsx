@@ -18,7 +18,7 @@ const GradientOption = ({ gradient }) => (
       className="flex items-center rounded-md border-2 border-muted peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer"
     >
       <div
-        className="w-10 h-10 rounded"
+        className="w-8 h-8 rounded"
         style={{
           background: `linear-gradient(to right, ${gradient.startColor}, ${gradient.endColor})`,
         }}
@@ -46,7 +46,7 @@ const GradientSelector = () => {
       <RadioGroup
         value={selectedGradient.name}
         onValueChange={handleGradientChange}
-        className="grid-cols-8"
+        className="grid-cols-12"
       >
         {gradients.map((gradient) => (
           <GradientOption

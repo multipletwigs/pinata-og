@@ -69,27 +69,30 @@ export default function LayoutASettings() {
   return (
     <fieldset className="grid gap-6 rounded-lg border p-4">
       <legend className="-ml-1 px-1 text-sm font-medium">
-        Layout A Settings
+        Layout Settings
       </legend>
 
       <div className="grid gap-4">
-        <FileUploadField onFileUpload={handleLogoUpload} label="Upload Logo" />
+        <FileUploadField
+          onFileUpload={handleLogoUpload}
+          label="Upload Visual Idenity"
+        />
 
         <FileUploadField
           onFileUpload={handleImageUpload}
-          label="Upload Image"
+          label="Upload Hero Image"
         />
 
         <div className="grid grid-cols-2 gap-4">
           <TextInputField
             id="company-name"
-            label="Company Name"
+            label="Brand Name"
             value={companyName}
             onChange={setCompanyName}
           />
           <TextInputField
             id="cta-text"
-            label="CTA Text"
+            label="Description"
             value={ctaText}
             onChange={setCtaText}
           />
@@ -122,7 +125,10 @@ export default function LayoutASettings() {
           </div>
         </div>
 
-        <Separator className="my-4" />
+        <div className="grid gap-3">
+          <h3 className="text-sm font-medium">Preset Gradients</h3>
+          <GradientSelector />
+        </div>
 
         <div className="grid gap-3">
           <h3 className="text-sm font-medium">Grid Type</h3>
@@ -135,13 +141,6 @@ export default function LayoutASettings() {
               <SelectItem value="lines">Lines</SelectItem>
             </SelectContent>
           </Select>
-        </div>
-
-        <Separator className="my-4" />
-
-        <div className="grid gap-3">
-          <h3 className="text-sm font-medium">Preset Gradients</h3>
-          <GradientSelector />
         </div>
       </div>
     </fieldset>
