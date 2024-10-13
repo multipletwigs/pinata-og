@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
       height: 630,
       format: "webp",
       fit: "cover",
-      quality: 70,
+      quality: 90,
     };
 
     const response: GetCIDResponse = await pinata.gateways
