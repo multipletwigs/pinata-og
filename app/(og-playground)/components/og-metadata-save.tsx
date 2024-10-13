@@ -13,7 +13,7 @@ const SaveOGMetadata = () => {
   const { user, setIsLoginModalOpen, isLoginModalOpen } = useAuthStore();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = React.useState(false);
-
+  console.log(metadata);
   const handleAction = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
@@ -64,12 +64,10 @@ const SaveOGMetadata = () => {
       {metadata.cid && (
         <Card>
           <CardContent className="pt-6">
-            <h3 className="font-semibold text-sm mb-2">Generated Metadata</h3>
-            <p className="text-sm mb-2">
-              <span className="font-medium">CID:</span> {metadata.cid}
-            </p>
+            <h3 className="font-semibold text-sm mb-2"></h3>
+            OG Image Content Link
             <p className="text-sm break-all">
-              <span className="font-medium">Full API URL:</span>{" "}
+              {" "}
               {`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/og-image?cid=${metadata.cid}`}
             </p>
           </CardContent>
