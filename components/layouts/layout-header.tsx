@@ -1,12 +1,5 @@
 "use client";
 import React, { useEffect } from "react";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -15,19 +8,9 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
-import useUploadStore from "@/app/(og-playground)/store/projects";
 import { useAuthStore } from "@/app/(og-playground)/store/auth-user"; // Update this path
-import {
-  Loader2,
-  Lock,
-  Mail,
-  LogOut,
-  FolderOpen,
-  UserPlus,
-  LogIn,
-} from "lucide-react";
+import { Loader2, Lock, Mail, UserPlus, LogIn } from "lucide-react";
 
 export default function ProjectSelect() {
   const {
@@ -37,9 +20,7 @@ export default function ProjectSelect() {
     authError,
     isLoginModalOpen,
     isSignUp,
-    checkUser,
     handleAuth,
-    handleLogout,
     setIsLoginModalOpen,
     setIsSignUp,
   } = useAuthStore();

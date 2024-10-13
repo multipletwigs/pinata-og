@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { LogIn, LogOut, Mail } from "lucide-react";
 
-const UserAvatar = ({ isLoggedIn }) => {
+const UserAvatar = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
   const [gradientId, startColor, endColor] = useMemo(() => {
     const id = `gradient-${Math.random().toString(36).substr(2, 9)}`;
     const start = `hsl(${Math.random() * 360}, 100%, 50%)`;
