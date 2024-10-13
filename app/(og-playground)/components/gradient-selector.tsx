@@ -6,7 +6,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-const GradientOption = ({ gradient }) => (
+const GradientOption = ({ gradient }: { gradient: any }) => (
   <div className="flex items-center">
     <RadioGroupItem
       value={gradient.name}
@@ -32,7 +32,7 @@ const GradientSelector = () => {
     useGradientStore();
   const { setGradientStart, setGradientEnd } = useLayoutAStore();
 
-  const handleGradientChange = (gradientName) => {
+  const handleGradientChange = (gradientName: any) => {
     const gradient = gradients.find((g) => g.name === gradientName);
     if (gradient) {
       setSelectedGradient(gradient);
@@ -49,12 +49,7 @@ const GradientSelector = () => {
         className="grid-cols-12"
       >
         {gradients.map((gradient) => (
-          <GradientOption
-            key={gradient.name}
-            gradient={gradient}
-            isSelected={selectedGradient.name === gradient.name}
-            onSelect={() => handleGradientChange(gradient.name)}
-          />
+          <GradientOption key={gradient.name} gradient={gradient} />
         ))}
       </RadioGroup>
     </ScrollArea>
