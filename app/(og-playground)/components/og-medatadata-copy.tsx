@@ -11,7 +11,7 @@ const OGImageMetadataCopy = () => {
   const { title, description, site_name, cid } = metadata;
 
   const ogImageUrl = cid
-    ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/og-image?cid=${cid}`
+    ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/get-og?cid=${cid}`
     : "";
 
   const metaTags = `
