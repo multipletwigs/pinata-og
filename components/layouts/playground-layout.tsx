@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation";
 import PinataHackathonSubmissionCard from "./submission-card";
 
 const navigationItems = [
-  { href: "/", label: "Dashboard", icon: Home },
+  { href: "/", label: "OG Image Builder", icon: Home },
   { href: "/collections", label: "Collections", icon: Package },
 ];
 
@@ -57,7 +57,7 @@ export default function PlaygroundLayout({
           </div>
         </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full">
         <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
           <Sheet>
             <SheetTrigger asChild>
@@ -72,30 +72,20 @@ export default function PlaygroundLayout({
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
               <nav className="grid gap-2 text-lg font-medium">
-                <Link
-                  href="#"
-                  className="flex items-center gap-2 text-lg font-semibold"
-                >
-                  <Package2 className="h-6 w-6" />
-                  <span className="sr-only">Acme Inc</span>
-                </Link>
-                <Link
-                  href="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <Home className="h-5 w-5" />
-                  Dashboard
-                </Link>
-                <Link
-                  href="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
-                >
-                  <ShoppingCart className="h-5 w-5" />
-                  Orders
-                  <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                    New Feature
-                  </Badge>
-                </Link>
+                {navigationItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary ${
+                      pathname === item.href
+                        ? "bg-muted text-primary"
+                        : "text-muted-foreground"
+                    }`}
+                  >
+                    <item.icon className="h-4 w-4" />
+                    {item.label}
+                  </Link>
+                ))}
               </nav>
               <div className="mt-auto">
                 <PinataHackathonSubmissionCard />
@@ -104,8 +94,8 @@ export default function PlaygroundLayout({
           </Sheet>
           <ProfileDisplay />
         </header>
-        <main className="flex gap-4 p-4 lg:gap-6 lg:p-6 mx-auto flex-col lg:flex-row">
-          {children}
+        <main className="flex-1 overflow-auto">
+          <div className=" gap-4 p-4 h-full 2xl:p-8">{children}</div>
         </main>
       </div>
     </div>

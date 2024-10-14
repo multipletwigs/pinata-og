@@ -23,7 +23,9 @@ export default function OGMetadataExport() {
 
       <form className="space-y-6">
         <div className="space-y-2">
-          <Label htmlFor="og_image_path">OG Image Name</Label>
+          <Label htmlFor="og_image_path">
+            OG Image Name (give it any name!)
+          </Label>
           <Input
             id="og_image_path"
             name="og_image_path"
@@ -47,7 +49,7 @@ export default function OGMetadataExport() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="site_name">Site Path</Label>
+            <Label htmlFor="site_name">Metatag site_url (og:url)</Label>
             <Input
               id="site_name"
               name="site_name"
@@ -60,11 +62,11 @@ export default function OGMetadataExport() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="description">Description</Label>
+          <Label htmlFor="description">Metatag Description</Label>
           <Textarea
             id="description"
             name="description"
-            placeholder="Hello everyone, are you sleeping well? Drink water please."
+            placeholder="Generate beautiful og:images with Pinata!"
             value={metadata.description || ""}
             onChange={handleInputChange}
           />

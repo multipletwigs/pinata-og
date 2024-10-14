@@ -3,27 +3,15 @@ import { Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import useOGMetadataStore from "@/app/(og-playground)/store/og-metadata";
+import { generateMetaTags } from "@/lib/utils";
 
 const OGImageMetadataCopy = () => {
   const [copied, setCopied] = useState(false);
   const { metadata } = useOGMetadataStore();
-
-  const { title, description, site_name, cid } = metadata;
-
-  const ogImageUrl = cid
-    ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/get-og?cid=${cid}`
-    : "";
-
-  const metaTags = `
-<meta property="og:image" content="${ogImageUrl}" />
-<meta property="og:image:secure_url" content="${ogImageUrl}" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="${title}" />
-<meta property="og:title" content="${title}" />
-<meta property="og:description" content="${description}" />
-<meta property="og:site_name" content="${site_name}" />
-  `.trim();
+  const metaTags = generateMetaTags({
+    ...metadata,
+    baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL!,
+  });
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(metaTags).then(() => {
@@ -52,8 +40,8 @@ const OGImageMetadataCopy = () => {
         </Button>
       </CardHeader>
       <CardContent>
-        <div className="h-40 w-[500px] overflow-y-auto overflow-x-auto">
-          <pre className="bg-muted p-4 rounded-md text-sm">
+        <div className="h-40 w-full overflow-y-auto">
+          <pre className="bg-muted p-4 rounded-md text-sm text-wrap">
             <code>{metaTags}</code>
           </pre>
         </div>

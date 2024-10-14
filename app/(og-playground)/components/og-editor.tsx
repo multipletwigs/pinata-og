@@ -33,7 +33,7 @@ const TAB_ITEMS: TabItem[] = [
 
 export default function OGPlayground() {
   return (
-    <Tabs defaultValue="images" className="w-full md:w-[600px]">
+    <Tabs defaultValue="images" className="w-full">
       <TabsList>
         {TAB_ITEMS.map((tab, index) => {
           return (

@@ -46,7 +46,7 @@ const GradientSelector = () => {
       <RadioGroup
         value={selectedGradient.name}
         onValueChange={handleGradientChange}
-        className="grid-cols-12"
+        className="flex flex-row gap-2"
       >
         {gradients.map((gradient) => (
           <GradientOption key={gradient.name} gradient={gradient} />
