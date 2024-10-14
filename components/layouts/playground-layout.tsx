@@ -96,7 +96,7 @@ export default function PlaygroundLayout({
                   href="https://x.com/bashtwigs"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-blue-500 hover:text-blue-600 transition-all"
+                  className="inline-flex justify-center align-middle items-center gap-1 text-blue-500 hover:text-blue-600 transition-all"
                 >
                   <Twitter className="w-4 h-4" />
                   @bashtwigs
