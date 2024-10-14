@@ -27,24 +27,36 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>{}</title>
+        <title>Pinata OG!</title>
         <meta
-          property="og:image"
-          content="https://pinata.nightly.ink/api/get-og?cid=bafybeigmarnob5xgrgvjbny2swrbgkti6iusorve2lkypt75vykmhlv7ke"
+          name="description"
+          content="Generate beautiful images with Pinata File API and Image Optimizations!"
         />
-        <meta
-          property="og:image:secure_url"
-          content="https://pinata.nightly.ink/api/get-og?cid=bafybeigmarnob5xgrgvjbny2swrbgkti6iusorve2lkypt75vykmhlv7ke"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="og:pinata" />
-        <meta property="og:title" content="og:pinata" />
+
+        <meta property="og:url" content="https://pinata.nightly.ink" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Pinata OG!" />
         <meta
           property="og:description"
-          content="Generate beautiful OpenGraph Images with Pinata!"
+          content="Generate beautiful images with Pinata File API and Image Optimizations!"
         />
-        <meta property="og:site_name" content="https://pinata.nightly.ink" />
+        <meta
+          property="og:image"
+          content="https://pinata.nightly.ink/api/get-og?cid=bafybeibk7fs3tb7gzxav36j3cxdaapq5bcn4rqlcaomhofcys5wnvglhpi"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="https://pinata.nightly.ink" />
+        <meta property="twitter:url" content="https://pinata.nightly.ink" />
+        <meta name="twitter:title" content="Pinata OG!" />
+        <meta
+          name="twitter:description"
+          content="Generate beautiful images with Pinata File API and Image Optimizations!"
+        />
+        <meta
+          name="twitter:image"
+          content="https://pinata.nightly.ink/api/get-og?cid=bafybeibk7fs3tb7gzxav36j3cxdaapq5bcn4rqlcaomhofcys5wnvglhpi"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
