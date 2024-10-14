@@ -15,7 +15,7 @@ interface TabItem {
 const TAB_ITEMS: TabItem[] = [
   {
     triggerValue: "images",
-    triggerLabel: "OG Image Builder",
+    triggerLabel: "Image Builder",
     triggerContent: <TabImages />,
   },
   {
@@ -25,7 +25,7 @@ const TAB_ITEMS: TabItem[] = [
   },
   {
     triggerValue: "editor",
-    triggerLabel: "OG Code Editor",
+    triggerLabel: "Code Editor",
     triggerContent: <div>This is for Editor!</div>,
     disabled: true,
   },
@@ -41,6 +41,7 @@ export default function OGPlayground() {
               key={`playground-tab-${tab.triggerValue}-${index}`}
               disabled={tab.disabled}
               value={tab.triggerValue}
+              className="text-xs sm:text-sm "
             >
               {tab.disabled && <LucideLock className="w-4 h-4 mr-2" />}
               {tab.triggerLabel}

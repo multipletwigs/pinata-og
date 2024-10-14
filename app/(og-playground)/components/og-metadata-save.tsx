@@ -47,7 +47,7 @@ const SaveOGMetadata = () => {
 
   const buttonText = user
     ? "Save and Generate Metadata"
-    : "Login to Generate og:image and Save Metadata";
+    : "Login to Generate og:image";
 
   return (
     <div className="space-y-4">
@@ -71,7 +71,6 @@ const SaveOGMetadata = () => {
           )}
         </Button>
       </div>{" "}
-      {isLoginModalOpen && <LoginDialog />}
       {
         <Card>
           <CardContent className="pt-4">

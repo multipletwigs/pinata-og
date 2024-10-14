@@ -11,8 +11,8 @@ import Link from "next/link";
 
 const PinataHackathonSubmissionCard = () => {
   return (
-    <Card x-chunk="dashboard-02-chunk-0">
-      <CardHeader className="p-2 pt-0 md:p-4">
+    <Card className="p-2">
+      <CardHeader className="p-2 md:p-4">
         <CardTitle>Pinata Dev Hackathon Submission</CardTitle>
         <CardDescription>
           Simplifying the creation and sharing of Open Graph images using

@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation";
 import PinataHackathonSubmissionCard from "./submission-card";
 
 const navigationItems = [
-  { href: "/", label: "OG Image Builder", icon: Home },
+  { href: "/", label: "Image Builder", icon: Home },
   { href: "/collections", label: "Collections", icon: Package },
 ];
 
@@ -90,9 +90,21 @@ export default function PlaygroundLayout({
               <div className="mt-auto">
                 <PinataHackathonSubmissionCard />
               </div>
+              <div className="gap-2 text-xs text-center sm:text-left sm:text-sm">
+                Created with love by{" "}
+                <a
+                  href="https://x.com/bashtwigs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-blue-500 hover:text-blue-600 transition-all"
+                >
+                  <Twitter className="w-4 h-4" />
+                  @bashtwigs
+                </a>
+              </div>
             </SheetContent>
           </Sheet>
-          <div className="inline-flex items-center gap-2 text-sm">
+          <div className="hidden sm:inline-flex items-center gap-2 text-xs text-center sm:text-left sm:text-sm">
             Created with love by{" "}
             <a
               href="https://x.com/bashtwigs"
