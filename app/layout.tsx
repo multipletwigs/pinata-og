@@ -26,38 +26,7 @@ export default function RootLayout({
   const isLoginModalOpen = useAuthStore((state) => state.isLoginModalOpen);
   return (
     <html lang="en">
-      <head>
-        <title>Pinata OG!</title>
-        <meta
-          name="description"
-          content="Generate beautiful images with Pinata File API and Image Optimizations!"
-        />
-
-        <meta property="og:url" content="https://pinata.nightly.ink" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Pinata OG!" />
-        <meta
-          property="og:description"
-          content="Generate beautiful images with Pinata File API and Image Optimizations!"
-        />
-        <meta
-          property="og:image"
-          content="https://pinata.nightly.ink/api/get-og?cid=bafybeibk7fs3tb7gzxav36j3cxdaapq5bcn4rqlcaomhofcys5wnvglhpi"
-        />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="https://pinata.nightly.ink" />
-        <meta property="twitter:url" content="https://pinata.nightly.ink" />
-        <meta name="twitter:title" content="Pinata OG!" />
-        <meta
-          name="twitter:description"
-          content="Generate beautiful images with Pinata File API and Image Optimizations!"
-        />
-        <meta
-          name="twitter:image"
-          content="https://pinata.nightly.ink/api/get-og?cid=bafybeibk7fs3tb7gzxav36j3cxdaapq5bcn4rqlcaomhofcys5wnvglhpi"
-        />
-      </head>
+      <head></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
