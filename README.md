@@ -1,36 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pinata DEV Hackathon Submission | Pinata OG
+<!-- Share an overview about your project. -->
+Ever found yourself pulling your hair out over OpenGraph (OG) Images? Wait, what's an OG Image, you ask? It's the secret sauce that turns your boring links into eye-catching masterpieces when you share them on social media! Picture this: your link, strutting its stuff on platforms like a digital runway model. Trust me, a sizzling OG Image is the difference between "meh" and "click me now!"
 
-## Getting Started
+![Discord Link OG Image Embed](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9v1nrhi5c87n7g504n1f.png)
+Feast your eyes on this beauty! ☝️ That, my friends, is the power of a well-crafted OG Image in action.
 
-First, run the development server:
+Tired of your links being wallflowers at the social media party? Fear not! I've built a platform that would let you generate gorgeous OpenGraph Images With just a few clicks, and you'll be pumping out drop-dead gorgeous OpenGraph Images for your sites in seconds!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Here's the deal: edit some fields, sprinkle your magic on it, and voilà! Your OG Image is ready to rock. But wait, there's more! We'll even generate those pesky metadata tags for you. Just copy, paste them into your `<head></head>` component, and you're good to go! It's so simple even your grandmother could do it!
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+So, ready to give your links a glow-up and watch those click rates soar? Let's make your content pop!
