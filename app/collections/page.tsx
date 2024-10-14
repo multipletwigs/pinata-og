@@ -4,11 +4,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
-import { Clipboard, Check, FileImage, Cloud } from "lucide-react";
+import { Clipboard, Check } from "lucide-react";
 import useOGMetadataListStore from "@/app/(og-playground)/store/og-metadata-display";
 import { useAuthStore } from "../(og-playground)/store/auth-user";
 import { generateMetaTags } from "@/lib/utils"; // Assume this is the correct import path
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogTitle,
+  DialogHeader,
+  DialogContent,
+} from "@/components/ui/dialog";
 
 export interface OGMetadata {
   author: string | null;
@@ -103,7 +110,6 @@ const MetadataList = () => {
 };
 
 const MetadataCard = ({ metadata }: { metadata: OGMetadata }) => {
-  const [showTags, setShowTags] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const metaTags = generateMetaTags({
@@ -141,7 +147,7 @@ const MetadataCard = ({ metadata }: { metadata: OGMetadata }) => {
         {metadata.og_image_path && (
           <div className="aspect-w-16 aspect-h-9 overflow-hidden">
             <img
-              src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/get-og?cid=${metadata.og_image_path}`}
+              src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/get-og?cid=${metadata.cid}`}
               alt={metadata.title}
               className="object-cover w-full h-full"
               loading="lazy"
@@ -149,39 +155,41 @@ const MetadataCard = ({ metadata }: { metadata: OGMetadata }) => {
           </div>
         )}
         <div className="p-3 sm:p-6">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setShowTags(!showTags)}
-            className="w-full mb-2"
-          >
-            {showTags ? "Hide Tags" : "Show Tags"}
-          </Button>
-          {showTags && (
-            <div className="mt-2">
-              <pre className="bg-gray-100 p-2 rounded text-xs overflow-x-auto">
-                {metaTags}
-              </pre>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={copyToClipboard}
-                className="mt-2 w-full"
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-4 h-4 mr-2" />
-                    Copied!
-                  </>
-                ) : (
-                  <>
-                    <Clipboard className="w-4 h-4 mr-2" />
-                    Copy to Clipboard
-                  </>
-                )}
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" size="sm" className="w-full">
+                Show Tags
               </Button>
-            </div>
-          )}
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Meta Tags</DialogTitle>
+              </DialogHeader>
+              <div className="mt-2 overflow-x-auto">
+                <pre className="p-2 rounded text-xs overflow-x-auto max-h-[300px] text-wrap">
+                  {metaTags}
+                </pre>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={copyToClipboard}
+                  className="mt-4 w-full"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4 mr-2" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Clipboard className="w-4 h-4 mr-2" />
+                      Copy to Clipboard
+                    </>
+                  )}
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </CardContent>
     </Card>
