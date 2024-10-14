@@ -21,7 +21,9 @@ const PinataHackathonSubmissionCard = () => {
       </CardHeader>
       <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
         <Button asChild size="sm" className="w-full">
-          <Link href="/og-image-creator">Read More Here!</Link>
+          <Link href="https://dev.to/nightlyinks/pinata-og-generate-beautiful-opengraph-images-with-pinata-file-api-2mmp">
+            Read More Here!
+          </Link>
         </Button>
       </CardContent>
     </Card>
