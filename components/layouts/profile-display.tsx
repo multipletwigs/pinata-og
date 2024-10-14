@@ -10,11 +10,16 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { LogIn, LogOut, Mail, Paintbrush } from "lucide-react";
+import { LogIn, LogOut, Mail, MousePointer2, Paintbrush } from "lucide-react";
 
 const UserAvatar = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
   if (isLoggedIn) {
-    return <div className="h-6 w-6"></div>;
+    return (
+      <div className="inline-flex gap-2">
+        {<MousePointer2 className="h-5 w-5" />}
+        Settings
+      </div>
+    );
   }
 
   return (
