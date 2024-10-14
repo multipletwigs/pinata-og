@@ -44,6 +44,8 @@ export const LoginDialog = () => {
             {isSignUp
               ? "Sign up to save and generate metadata"
               : "Login to access your account"}
+            <br />
+            Do not worry, it is just for this hackathon!
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">

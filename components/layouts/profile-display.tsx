@@ -10,21 +10,19 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { LogIn, LogOut, Mail } from "lucide-react";
+import { LogIn, LogOut, Mail, Paintbrush } from "lucide-react";
 
 const UserAvatar = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
-  const [gradientId, startColor, endColor] = useMemo(() => {
-    const id = `gradient-${Math.random().toString(36).substr(2, 9)}`;
-    const start = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    const end = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    return [id, start, end];
-  }, []);
-
   if (isLoggedIn) {
     return <div className="h-6 w-6"></div>;
   }
 
-  return <LogIn className="h-5 w-5" />;
+  return (
+    <div className="inline-flex gap-2">
+      <Paintbrush className="h-5 w-5" />
+      <p>Start generating OG Images!</p>
+    </div>
+  );
 };
 
 export default function ProfileDisplay() {
@@ -33,7 +31,7 @@ export default function ProfileDisplay() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="secondary" size="icon" className="rounded-full">
+        <Button variant="secondary" className="rounded-md">
           <UserAvatar isLoggedIn={!!user} />
           <span className="sr-only">Toggle user menu</span>
         </Button>

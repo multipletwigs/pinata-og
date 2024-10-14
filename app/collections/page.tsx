@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
-import { Clipboard, Check } from "lucide-react";
+import { Clipboard, Check, FileImage, Cloud } from "lucide-react";
 import useOGMetadataListStore from "@/app/(og-playground)/store/og-metadata-display";
 import { useAuthStore } from "../(og-playground)/store/auth-user";
 import { generateMetaTags } from "@/lib/utils"; // Assume this is the correct import path
@@ -28,14 +28,56 @@ const MetadataList = () => {
     useOGMetadataListStore();
 
   const user = useAuthStore((state) => state.user);
-
-  if (!user) {
-    return <div>Login</div>;
-  }
+  const setIsLoginModalOpen = useAuthStore(
+    (state) => state.setIsLoginModalOpen,
+  );
 
   useEffect(() => {
-    fetchAllMetadata();
-  }, [fetchAllMetadata]);
+    if (user) {
+      fetchAllMetadata();
+    }
+  }, [user, fetchAllMetadata]);
+
+  if (!user) {
+    return (
+      <div className="flex items-center justify-center h-full">
+        <Card className="w-full max-w-lg shadow-lg">
+          <CardHeader className="text-center pb-2">
+            <CardTitle className="text-3xl font-extrabold">
+              Pinata OG!
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col items-center space-y-6">
+              <p className="text-center text-lg">
+                Supercharge your web presence with dynamic OG images!
+              </p>
+              <ul className="text-sm space-y-2">
+                <li className="flex items-center">
+                  <span className="mr-2 text-green-500">✓</span> Easily manage
+                  and update OG images
+                </li>
+                <li className="flex items-center">
+                  <span className="mr-2 text-green-500">✓</span> Leverage
+                  Pinata's powerful file APIs
+                </li>
+                <li className="flex items-center">
+                  <span className="mr-2 text-green-500">✓</span> Boost your
+                  social media engagement
+                </li>
+              </ul>
+              <Button
+                onClick={() => setIsLoginModalOpen(true)}
+                className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform"
+              >
+                Get Started Now
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   if (isLoading)
     return (

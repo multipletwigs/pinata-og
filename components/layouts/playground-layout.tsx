@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Home, Menu, Package, Package2, ShoppingCart } from "lucide-react";
+import { Home, Menu, Package, Twitter } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -58,7 +58,7 @@ export default function PlaygroundLayout({
         </div>
       </div>
       <div className="flex flex-col w-full">
-        <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+        <header className="flex h-14 items-center justify-between gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
           <Sheet>
             <SheetTrigger asChild>
               <Button
@@ -92,6 +92,18 @@ export default function PlaygroundLayout({
               </div>
             </SheetContent>
           </Sheet>
+          <div className="inline-flex items-center gap-2 text-sm">
+            Created with love by{" "}
+            <a
+              href="https://x.com/bashtwigs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-blue-500 hover:text-blue-600 transition-all"
+            >
+              <Twitter className="w-4 h-4" />
+              @bashtwigs
+            </a>
+          </div>
           <ProfileDisplay />
         </header>
         <main className="flex-1 overflow-auto">
