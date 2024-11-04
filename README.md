@@ -1,5 +1,7 @@
 # Pinata DEV Hackathon Submission | Pinata OG
 
+> Thank you for your support! I've won the Pinata DEV Hackathon! Turning this into SaaS now!!! :)
+
 ![site_ss](https://github.com/user-attachments/assets/b6777c32-e11e-4c24-af0b-8bc5206fcc35)
 
 Tired of your links being wallflowers at the social media party? Fear not! I've built a platform that would let you generate gorgeous OpenGraph Images With just a few clicks, and you'll be pumping out drop-dead gorgeous OpenGraph Images for your sites in seconds!
